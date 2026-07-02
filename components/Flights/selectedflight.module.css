@@ -1,0 +1,32 @@
+.flightcontainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid #e9e8fc;
+  padding: 16px;
+}
+.leftcontainer {
+  display: flex;
+  gap: 8px;
+}
+.imageContainer {
+  position: relative;
+}
+
+.infosection,
+.timinginfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.flightcontainer span {
+  line-height: 21.82px;
+  font-size: 16px;
+}
+.airport {
+  color: #29293d;
+}
+.flightnum {
+  color: #7c8db0;
+}

@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  padding: 20px 24px 16px 24px;
+}
+
+.leftSection,
+.rightSection {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.leftSection {
+  gap: 16px;
+}
+.rightSection {
+  gap: 8px;
+}
+.checkboxcontainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxcontainer span {
+  line-height: 21.82px;
+  color: #6e7491;
+}
+
+.checkboxcontainer input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #6e7491;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkboxcontainer input[type="checkbox"]:checked::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #605dec;
+  position: absolute;
+}
+.dateselect {
+  width: 252px;
+}

@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.wrapper {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #cbd4e6;
+  cursor: pointer;
+  position: relative;
+}
+.item {
+  line-height: 21.82px;
+  font-size: 16px;
+  color: #27273f;
+}
+.icon {
+  color: #52527a;
+}
+.listContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}

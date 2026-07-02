@@ -1,0 +1,27 @@
+.container,
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  gap: 24px;
+}
+.container h3 {
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #6e7491;
+  font-weight: 700;
+}
+.container .info h4 {
+  font-size: 18px;
+  color: #6e7491;
+  line-height: 24.55px;
+}
+.container .info p {
+  font-size: 16px;
+  color: #7c8db0;
+  line-height: 21.82px;
+}
+.info {
+  gap: 12px;
+}

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  width: 100%;
+  border: 1px solid #605dec;
+  border-radius: 4px;
+}
+
+.methodcontainer {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 4px;
+  cursor: pointer;
+}
+.image {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+.container .methodcontainer p {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #605dec;
+}
+.selected {
+  background-color: #605dec;
+  border-radius: 4px;
+}
+.container .selected p {
+  color: #fafafa;
+}

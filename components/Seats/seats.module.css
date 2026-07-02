@@ -1,0 +1,82 @@
+.container {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  width: 220px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 2;
+}
+
+.businessSection,
+.economySection {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #ffffff;
+  position: relative;
+}
+.businessSection {
+  gap: 12px;
+  padding: 12px 0;
+}
+.economySection {
+  gap: 4px;
+  padding: 8px 0px;
+}
+.rowexitrowcontainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+}
+.exitRow {
+  font-weight: 600;
+  line-height: 16.37px;
+  font-size: 12px;
+  color: #7c8db0;
+}
+.row {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 5px;
+  justify-content: space-between;
+}
+
+.seatBusiness {
+  width: 30px;
+  height: 40px;
+  background: linear-gradient(to bottom, #5cd6c0 0%, #22c3a6 100%);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.seatBusiness.selected {
+  background: linear-gradient(to bottom, #eb568c 0%, #ed5e76 100%);
+}
+
+.seatEconomy {
+  width: 22px;
+  height: 32px;
+  background: linear-gradient(to bottom, #605dec 0%, #2a26d9 100%);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.seatEconomy.selected {
+  background: linear-gradient(to bottom, #eb568c 0%, #ed5e76 100%);
+}
+
+.rowNumber {
+  width: 30px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7c8db0;
+}

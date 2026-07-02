@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 56px 96px;
+  width: 100%;
+}
+.leftcontainer {
+  width: 52.3%;
+}
+
+.leftcontainer,
+.passengercontainer {
+  display: flex;
+  flex-direction: column;
+}
+.rightcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 104px;
+  padding-top: 175px;
+}
+.leftcontainer {
+  gap: 76px;
+}
+.passengercontainer {
+  gap: 36px;
+}
+.buttonscontainer {
+  display: flex;
+  gap: 24px;
+}
+.Imagecontainer {
+  position: relative;
+}

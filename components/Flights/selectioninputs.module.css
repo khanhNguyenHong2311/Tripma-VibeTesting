@@ -1,0 +1,13 @@
+.selectcontainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search button {
+  background-color: #605dec;
+  padding: 17px 25px;
+  border-radius: 4px;
+  border: none;
+  color: #fafafa;
+}

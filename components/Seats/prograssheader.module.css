@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #27273f;
+}
+.flightcontainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+.stepContent {
+  display: flex;
+  flex-direction: column;
+}
+.step {
+  padding: 16px 20px;
+}
+.imagecontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.big {
+  color: #fafafa;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32.74px;
+}
+.time {
+  color: white;
+  font-size: 16px;
+  line-height: 21.82px;
+}
+.small {
+  color: #e9e8fc;
+  line-height: 16.37px;
+  font-size: 12px;
+}
+.current {
+  background-color: #605dec;
+  position: relative;
+}
+.iconContainer {
+  position: absolute;
+  top: 85px;
+  right: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+}

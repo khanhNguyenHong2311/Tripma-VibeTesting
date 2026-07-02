@@ -1,0 +1,25 @@
+.outercontainer {
+  display: flex;
+  flex-direction: column;
+  padding: 64px;
+  gap: 24px;
+}
+.textconatiner {
+  display: flex;
+  justify-content: center;
+}
+.outercontainer .textconatiner h3 {
+  line-height: 32.74px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #6e7491;
+}
+.outercontainer .textconatiner span {
+  color: #605dec;
+}
+
+.combinedcontainer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}

@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Flight {
+  flightId      String   @id @default(uuid()) @db.Uuid
+  fromCity      String
+  toCity        String
+  type          Boolean // True for round-trip, False for one-way
+  imgPath       String
+  subtotalPrice Float
+  taxesAndFees  Float
+  baggageFees   Float
+  airlineName   String
+  duration      String // Format: "Xh Ymin"
+  numberofStops Int
+  stopsInfo     String?
+  fromToTime    String // Format: "7:00AM - 4:15PM"
+  Date          DateTime // Date and time of departure
+
+  Seats               Seat[]
+  BookingsAsDeparting Booking[] @relation("DepartingFlight")
+  BookingsAsReturning Booking[] @relation("ReturningFlight")
+}
+
+model Seat {
+  flightId   String  @db.Uuid
+  type       String // "Economy" or "Business"
+  seatNumber String
+  available  Boolean
+  price      Float
+
+  Flight Flight @relation(fields: [flightId], references: [flightId])
+
+  @@id([flightId, seatNumber])
+}
+
+model FlightDeals {
+  id          String @id @default(uuid()) @db.Uuid
+  placeName   String
+  city        String
+  imgPath     String
+  price       Float
+  description String
+}
+
+model UniquePlaces {
+  id          String @id @default(uuid()) @db.Uuid
+  placeName   String
+  city        String
+  imgPath     String
+  price       Float
+  description String
+  motivation  String
+}
+
+model CommentSection {
+  id          String   @id @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  date        DateTime
+  rate        Int
+  description String
+
+  // Relations
+  User User @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id            String           @id @default(uuid()) @db.Uuid
+  email         String?          @unique
+  password      String?
+  username      String?
+  image         String? // requested by google 
+  name          String? // requested by google 
+  emailVerified DateTime? // requested by google 
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  accounts      Account[]
+  Bookings      Booking[]
+  Comments      CommentSection[]
+}
+
+model Booking {
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String?  @db.Uuid
+  departingFlightId   String   @db.Uuid
+  returningFlightId   String?  @db.Uuid // Optional, can be null if not applicable
+  departingSeat       String
+  arrivingSeat        String? // Optional, can be null if not applicable
+  baggageFees         Float
+  upgradeFees         Float
+  total               Float
+  confirmationMessage String // Unique confirmation message
+  createdAt           DateTime @default(now())
+
+  User             User?            @relation(fields: [userId], references: [id])
+  DepartingFlight  Flight           @relation("DepartingFlight", fields: [departingFlightId], references: [flightId])
+  ReturningFlight  Flight?          @relation("ReturningFlight", fields: [returningFlightId], references: [flightId])
+  PassengerInfos   PassengerInfo[]
+  PaymentInfos     PaymentInfo[]
+  ShareItineraries ShareItinerary[]
+}
+
+model PassengerInfo {
+  id                  String   @id @default(uuid()) @db.Uuid
+  firstName           String
+  middleName          String?
+  lastName            String
+  suffix              String?
+  dateOfBirth         DateTime
+  email               String
+  phone               String
+  redressNumber       String?
+  knownTravelerNumber String?
+  bookingId           String   @db.Uuid
+
+  Booking Booking @relation(fields: [bookingId], references: [id])
+}
+
+model PaymentInfo {
+  id          String   @id @default(uuid()) @db.Uuid
+  paymentType String
+  bookingId   String   @db.Uuid
+  nameOnCard  String
+  cardNumber  String
+  ccv         String
+  date        DateTime
+  expireDate  DateTime
+
+  Booking Booking @relation(fields: [bookingId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ShareItinerary {
+  id        String @id @default(uuid()) @db.Uuid
+  bookingId String @db.Uuid
+  email     String
+
+  Booking Booking @relation(fields: [bookingId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Account {
+  id                 String    @id @default(uuid()) @db.Uuid
+  userId             String    @db.Uuid
+  providerType       String
+  provider           String
+  providerAccountId  String
+  refreshToken       String?
+  accessToken        String?
+  accessTokenExpires DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  user               User      @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}

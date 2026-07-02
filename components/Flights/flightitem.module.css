@@ -1,0 +1,40 @@
+.flightcontainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.flightcontainer:hover {
+  background-color: #e6e6fa;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.infosection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.timinginfo,
+.locationinfo {
+  display: flex;
+  justify-content: space-between;
+}
+.flightcontainer .infosection .timinginfo span {
+  line-height: 21.82px;
+  font-size: 16px;
+  color: #27273f;
+}
+.flightcontainer .infosection .locationinfo span {
+  line-height: 21.82px;
+  font-size: 16px;
+  color: #7c8db0;
+}

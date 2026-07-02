@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.imageContainer {
+  width: 100%;
+}
+
+.info {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.description {
+  line-height: 21.82px;
+  color: #7c8db0;
+}

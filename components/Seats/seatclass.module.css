@@ -1,0 +1,58 @@
+.seatContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 8px;
+  width: 100%;
+}
+.imageContainer {
+  position: relative;
+}
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.seatContainer .infoContainer h4 {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #6e7491;
+}
+.seatContainer .infoContainer p {
+  font-size: 14px;
+  line-height: 19.1px;
+  color: #7c8db0;
+}
+.divider {
+  height: 4px;
+  width: 11%;
+}
+.divider.economy {
+  background-color: #605dec;
+}
+.divider.business {
+  background-color: #5cd6c0;
+}
+.benefitsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.seatContainer .infoContainer .benefitsList li {
+  font-size: 14px;
+  color: #6e7491;
+  line-height: 19.1px;
+}
+
+.benefitItem {
+  padding: 0px 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.benefitImage {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

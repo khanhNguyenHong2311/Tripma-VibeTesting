@@ -1,0 +1,36 @@
+.container,
+.cardinfo {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  gap: 24px;
+  width: 39.8%;
+}
+.cardinfo {
+  gap: 56px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #eb568c 100%, #ed5e76 100%);
+  padding: 28px 24px;
+}
+.image {
+  position: relative;
+}
+.container .cardinfo .cardname h4 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #f6f6fe;
+}
+.cardnumber {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.container .cardinfo .cardnumber p {
+  font-size: 16px;
+  line-height: 21.82px;
+  font-weight: 600;
+  color: #f6f6fe;
+}

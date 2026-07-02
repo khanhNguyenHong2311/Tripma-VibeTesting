@@ -1,0 +1,62 @@
+.footer {
+  color: #fff;
+  padding: 60px 120px 24px 120px;
+  display: flex;
+  gap: 40px;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.footer .container .section h3 {
+  padding: 4px;
+  line-height: 24.55px;
+  color: #6e7491;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.section {
+  padding: 16px 16px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.container .section .list li {
+  padding: 4px;
+}
+
+.container .section .list li a {
+  color: #7c8db0;
+  line-height: 21.82px;
+}
+
+.section ul {
+  list-style: none;
+}
+
+.section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.logoSection {
+  padding: 16px 16px 16px 0px;
+  grid-column: span 1;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: auto;
+}

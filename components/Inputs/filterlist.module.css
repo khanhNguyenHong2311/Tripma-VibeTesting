@@ -1,0 +1,21 @@
+.container {
+  border: none;
+  width: 100%;
+}
+.list {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cbd4e6;
+  border-radius: 8px;
+  max-height: 312px;
+  overflow-y: auto;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+.list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.leftcontainer {
+  width: 40%;
+}
+
+.personcategory {
+  line-height: 21.82px;
+  color: #6e7491;
+}
+
+

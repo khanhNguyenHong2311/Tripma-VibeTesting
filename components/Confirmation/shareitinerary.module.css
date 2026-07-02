@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  gap: 24px;
+}
+.container p {
+  font-size: 18px;
+  color: #7c8db0;
+  line-height: 24.55px;
+}
+.buttons {
+  display: flex;
+  gap: 12px;
+}

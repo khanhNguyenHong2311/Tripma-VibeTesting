@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  padding: 16px 0px;
+  width: 100%;
+}
+.footerdivider {
+  height: 1px;
+  background-color: #cbd4e6;
+  width: 100%;
+}
+
+.copyrightscontainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 120px;
+}
+.logocontainer {
+  display: flex;
+  padding: 8px;
+  gap: 20px;
+}
+.container .copyrightscontainer .copyrightsdescription span {
+  font-size: 18px;
+  color: #7c8db0;
+  line-height: 24.55px;
+}

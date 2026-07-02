@@ -1,0 +1,15 @@
+.reservationContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
+
+.flightspricecontainer {
+  display: flex;
+  flex-direction: column;
+}
+.reservebutton {
+  display: flex;
+  justify-content: flex-end;
+}

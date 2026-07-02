@@ -1,0 +1,23 @@
+.selectWrapper {
+  width: 100%;
+}
+.container {
+  width: 100%;
+  border: 2px solid #605dec;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.customSelect {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.placeholder {
+  font-size: 16px;
+  color: #888;
+}

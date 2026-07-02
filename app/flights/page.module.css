@@ -1,0 +1,35 @@
+.outercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 0px 64px;
+}
+.searchfiltercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.leftdescription {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.normalheader,
+.sepcialheader1 {
+  font-size: 24px;
+  line-height: 32.74px;
+  font-weight: 700;
+}
+.normalheader {
+  color: #6e7491;
+}
+.sepcialheader1 {
+  color: #605dec;
+  cursor: pointer;
+}

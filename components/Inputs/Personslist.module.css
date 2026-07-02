@@ -1,0 +1,14 @@
+.container {
+  padding-left: 24px;
+  border: none;
+  background-color: white;
+  width: 256px;
+  z-index: 5;
+}
+.list {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cbd4e6;
+  border-radius: 8px;
+}

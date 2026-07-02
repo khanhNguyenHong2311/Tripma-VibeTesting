@@ -1,0 +1,20 @@
+.input {
+  padding: 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #a1b0cc;
+  width: 100%;
+  font-size: 18px;
+  line-height: 24.55px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+}
+.input::placeholder {
+  color: #7c8db0;
+  font-size: 18px;
+  line-height: 24.55px;
+}
+.input:focus {
+  border: 1px solid #6678b1;
+  box-shadow: 0 0 5px rgba(102, 120, 177, 0.5);
+  outline: none;
+}

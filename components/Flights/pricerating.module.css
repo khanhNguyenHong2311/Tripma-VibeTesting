@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+.priceratingheader {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.paragraph1,
+.paragraph2 {
+  font-size: 16px;
+  line-height: 21.82px;
+}
+.paragraph1 {
+  color: #6e7491;
+}
+.paragraph2 {
+  color: #a1b0cc;
+}

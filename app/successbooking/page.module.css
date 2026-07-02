@@ -1,0 +1,29 @@
+.outercontainer {
+  display: flex;
+  width: 100%;
+  padding: 56px 96px;
+  gap: 76px;
+}
+.leftcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  width: 100%;
+}
+.outercontainer h3 {
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #6e7491;
+  font-weight: 700;
+}
+.route {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.routeimage {
+  position: relative;
+}
+.rightcontainer {
+  width: 411px;
+}

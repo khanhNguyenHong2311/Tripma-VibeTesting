@@ -1,0 +1,88 @@
+.infosection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.inputscontainer {
+  display: flex;
+  gap: 24px;
+}
+.innercontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.container16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.infosection h4 {
+  color: #6e7491;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24.55px;
+}
+.checkboxcontainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.checkboxcontainer label {
+  line-height: 21.82px;
+  color: #6e7491;
+  font-size: 16px;
+}
+.passengerinfobags {
+  display: flex;
+  gap: 242px;
+}
+.container16 .checkedbag h4 {
+  color: #7c8db0;
+}
+.innercontainer .container16 p {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #7c8db0;
+}
+.highlight {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #605dec;
+  cursor: pointer;
+}
+.checkboxcontainer input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  border: 1px solid #a1b0cc;
+  border-radius: 4px;
+  position: relative;
+}
+
+.checkboxcontainer input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease;
+}
+
+.checkboxcontainer input[type="checkbox"]:checked::before {
+  background-color: #605dec;
+}
+
+.checkboxcontainer input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

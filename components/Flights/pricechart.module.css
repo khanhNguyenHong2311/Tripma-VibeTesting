@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.container .pricesheader h4 {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #6e7491;
+}
+
+.chartcontainer {
+  background-color: white;
+  border: 1px solid #e9e8fc;
+}

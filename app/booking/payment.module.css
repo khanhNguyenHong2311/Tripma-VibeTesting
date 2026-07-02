@@ -1,0 +1,154 @@
+.container {
+  width: 100%;
+  padding: 56px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.leftcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 55.7%;
+}
+.verticalcontainer16 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.verticalcontainer16 h3 {
+  font-size: 24px;
+  line-height: 32.74px;
+  font-weight: 700;
+  color: #605dec;
+}
+.verticalcontainer16 p {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #7c8db0;
+}
+.paymentsection {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.paymentbody {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.paymentsection .paymentbody h4 {
+  color: #6e7491;
+  font-size: 18px;
+  line-height: 24.55px;
+}
+
+.paymentsection .paymentbody p {
+  color: #6e7491;
+  line-height: 21.82px;
+}
+.horizontalcontainer24 {
+  display: flex;
+  gap: 24px;
+}
+.verticalcontainer24 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.verticalcontainer16 h4 {
+  color: #6e7491;
+  font-size: 18px;
+  line-height: 24.55px;
+  font-weight: 600;
+}
+.verticalcontainer16 p {
+  line-height: 21.82px;
+  color: #7c8db0;
+}
+.verticalcontainer16 .checkboxcontainer p {
+  color: 6e7491;
+}
+.thirdpartySignup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 480px;
+}
+.thirdpartySignup .or {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: #7c8db0;
+}
+.thirdpartySignup .or::before,
+.thirdpartySignup .or::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #7c8db0;
+  margin: 0 10px;
+}
+.highlight {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #605dec;
+  cursor: pointer;
+}
+.buttonscontainer {
+  display: flex;
+  gap: 24px;
+}
+.checkboxcontainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.checkboxcontainer label {
+  line-height: 21.82px;
+  color: #6e7491;
+  font-size: 16px;
+}
+.checkboxcontainer input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  appearance: none;
+  border: 1px solid #a1b0cc;
+  border-radius: 4px;
+  position: relative;
+}
+
+.checkboxcontainer input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease;
+}
+
+.checkboxcontainer input[type="checkbox"]:checked::before {
+  background-color: #605dec;
+}
+
+.checkboxcontainer input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

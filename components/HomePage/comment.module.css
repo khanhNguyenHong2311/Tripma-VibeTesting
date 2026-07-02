@@ -1,0 +1,59 @@
+.commentContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border: none;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.userData {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.textSection .userData span {
+  line-height: 24.55px;
+  font-size: 18px;
+}
+
+.name {
+  font-weight: 600;
+  color: #6e7491;
+}
+
+.place {
+  color: #27273f;
+}
+
+.userRating {
+  display: flex;
+  align-items: center;
+}
+.starFilled {
+  color: #605dec;
+}
+
+.starEmpty {
+  color: #e0e0e0;
+}
+
+.comment {
+  font-size: 18px;
+  line-height: 24.55px;
+}
+.textSection .preview p {
+  color: #27273f;
+}
+.textSection .preview span {
+  color: #605dec;
+}

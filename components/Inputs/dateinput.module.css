@@ -1,0 +1,31 @@
+.selectWrapper {
+  position: relative;
+}
+.container {
+  width: 100%;
+  border: 1px solid #cbd4e6;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.customSelect {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.placeholder {
+  font-size: 16px;
+  color: #888;
+}
+.listContainer {
+  width: 642px;
+  position: absolute;
+  top: -20px;
+  left: -274px;
+  z-index: 10;
+  background-color: white;
+}

@@ -1,0 +1,61 @@
+.container,
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  width: 94%;
+  gap: 40px;
+}
+.info {
+  gap: 16px;
+}
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border: 1px solid #007b65;
+  padding: 16px 16px 16px 24px;
+  border-radius: 8px;
+  background-color: #eafffb;
+}
+
+.message p {
+  font-size: 16px;
+  line-height: 21.82px;
+  color: #007b65;
+}
+
+.closeicon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.closeicon span {
+  font-size: 24px;
+  color: #007b65;
+}
+
+.container .info h3 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32.74px;
+  color: #605dec;
+}
+.container .info h4 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #6e7491;
+}
+
+.container .info p {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #7c8db0;
+}

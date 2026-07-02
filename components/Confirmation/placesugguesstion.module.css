@@ -1,0 +1,33 @@
+.container,
+.hotelscontainer,
+.itemscontainer {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  width: 100%;
+  gap: 56px;
+}
+.hotelscontainer {
+  gap: 16px;
+}
+.itemscontainer {
+  gap: 32px;
+}
+.container .hotelscontainer p {
+  color: #7c8db0;
+  line-height: 24.55px;
+  font-size: 18px;
+}
+.route {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.routeimage {
+  position: relative;
+}
+.button {
+  display: flex;
+  justify-content: center;
+}

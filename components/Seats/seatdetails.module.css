@@ -1,0 +1,28 @@
+.detailsContainer {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 24px;
+}
+.speratorcontainer {
+  display: flex;
+  gap: 16px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
+.section .up {
+  font-size: 14px;
+  line-height: 19.1px;
+  color: #7c8db0;
+}
+.section .down {
+  font-weight: 600;
+  font-size: 18px;
+  color: #6e7491;
+}

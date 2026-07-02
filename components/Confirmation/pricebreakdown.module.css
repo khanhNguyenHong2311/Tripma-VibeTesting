@@ -1,0 +1,33 @@
+.container,
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  gap: 24px;
+  width: 53%;
+}
+.container .info .pricelistitem p {
+  font-size: 18px;
+  color: #6e7491;
+  line-height: 24.55px;
+}
+.info {
+  gap: 12px;
+}
+.pricelistitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.amount {
+  padding: 12px 0px;
+  border-top: 1px solid #cbd4e6;
+  border-bottom: 1px solid #cbd4e6;
+}
+.container .amount h4 {
+  color: #36374a;
+  line-height: 24.55px;
+  font-weight: 600;
+  font-size: 18px;
+}

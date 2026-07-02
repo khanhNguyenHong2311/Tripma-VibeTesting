@@ -1,0 +1,46 @@
+.gridpricecontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.gridpricecontainer .pricecontainer h4 {
+  color: #6e7491;
+  line-height: 24.55px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.gridpricecontainer .pricecontainer span {
+  color: #7c8db0;
+  line-height: 24.55px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 1px;
+  border: 1px solid #fce8e8;
+  width: 400px;
+}
+
+.gridItem,
+.headerItem {
+  padding: 8px;
+  border-left: 1px solid #e9e8fc;
+  border-bottom: 1px solid #e9e8fc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gridItem {
+  color: #6e7491;
+}
+
+.headerItem {
+  font-weight: 700;
+  line-height: 16.37px;
+  color: #52556f;
+  font-size: 12px;
+}

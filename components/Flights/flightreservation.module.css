@@ -1,0 +1,19 @@
+.flightpricesinfo {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.flightsinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.imagecontainer {
+  position: relative;
+}
+.pricesinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}

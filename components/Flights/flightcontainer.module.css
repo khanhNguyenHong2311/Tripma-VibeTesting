@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.flightscontainer {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e9e8fc;
+  background-color: white;
+  max-height: 456px;
+  overflow-y: auto;
+}
+.container .headercontainer h4 {
+  font-size: 18px;
+  line-height: 24.55px;
+  color: #6e7491;
+}
+.container .headercontainer span {
+  color: #605dec;
+  font-size: 18px;
+  line-height: 24.55px;
+}
+.buttoncontainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.flightscontainer::-webkit-scrollbar {
+  display: none;
+}
+.flightscontainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,11 @@
+.rightcontainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.button {
+  cursor: pointer;
+}
+.container .rightcontainer span {
+  margin-bottom: 4px !important;
+}

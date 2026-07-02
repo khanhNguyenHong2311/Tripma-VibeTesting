@@ -1,0 +1,16 @@
+.passengerheader {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.passengerheader h3 {
+  font-weight: 700;
+  line-height: 32.74px;
+  font-size: 24px;
+  color: #605dec;
+}
+.passengerheader p {
+  color: #7c8db0;
+  line-height: 24.55px;
+  font-size: 18px;
+}

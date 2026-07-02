@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 16px;
+  width: 100%;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21.82px;
+}
+.logo {
+  padding: 16px;
+}
+.logo img {
+  padding: 0;
+}
+.navList {
+  padding: 16px;
+}
+
+.outerdiv {
+  padding: 10px;
+}
+.navList ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+}
+.navbar a {
+  text-decoration: none;
+}
+.navList ul a {
+  color: #7c8db0;
+}
+.signup {
+  padding: 12px 20px;
+  background-color: #605dec;
+  border-radius: 4px;
+}
+.btn {
+  border: none;
+  cursor: pointer;
+}
+ul button .signup {
+  color: #fafafa;
+}
