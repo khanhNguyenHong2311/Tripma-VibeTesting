@@ -53,7 +53,7 @@ flowchart TD
     SelectReturningSeat --> SelectDepartingSeat
     ContinueSeats[Click Continue] --> PaymentPage
     
-    PaymentPage --> [Bạn 3: Payment]
+    PaymentPage --> PaymentSection[Bạn 3: Payment]
     PaymentPage --> InputCard[Nhập thông tin thẻ<br/>Tên, số thẻ, CCV, ngày hết hạn]
     InputCard --> CreateAccountOption{Tạo tài khoản?}
     CreateAccountOption -->|Yes| InputAccount[Nhập email/password]
@@ -141,7 +141,7 @@ flowchart TD
     SelectReturningSeat --> SelectDepartingSeat
     ContinueSeats[Click Continue] --> PaymentPage
     
-    PaymentPage --> [Bạn 3: Payment]
+    PaymentPage --> PaymentSection[Bạn 3: Payment]
     PaymentPage --> InputCard[Nhập thông tin thẻ]
     InputCard --> ValidatePayment{Validation OK?}
     ValidatePayment -->|No| InputCard
@@ -205,7 +205,7 @@ flowchart TD
     SignInModal --> InputSignInEmail[Nhập email]
     InputSignInEmail --> InputSignInPassword[Nhập password]
     InputSignInPassword --> SignInBtn[Click Sign in]
-    SignInBtn --> CallSignInAPI[Gọi API /api/auth/[...nextauth]]
+    SignInBtn --> CallSignInAPI[Gọi API /api/auth/nextauth]
     CallSignInAPI --> SignInResponse{Thành công?}
     SignInResponse -->|No| ShowSignInError[Hiển thị lỗi]
     ShowSignInError --> InputSignInEmail
