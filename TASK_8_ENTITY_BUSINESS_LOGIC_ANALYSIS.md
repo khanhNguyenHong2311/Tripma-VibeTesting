@@ -516,78 +516,144 @@
 
 ## 5. Entity Relationship Diagram (ERD)
 
-```
-┌─────────────┐       ┌─────────────┐
-│   Flight    │1     *│    Seat     │
-├─────────────┤       ├─────────────┤
-│ flightId(PK)│<──────│ flightId(FK)│
-│ fromCity    │       │ type        │
-│ toCity      │       │ seatNumber(PK)│
-│ type        │       │ available   │
-│ ...         │       │ price       │
-└─────────────┘       └─────────────┘
-       │
-       │1
-       │
-       │*
-┌─────────────┐       ┌─────────────┐
-│   Booking   │*     1│    User     │
-├─────────────┤       ├─────────────┤
-│ id(PK)      │──────>│ id(PK)      │
-│ userId(FK)  │       │ email       │
-│ departing...│       │ password    │
-│ returning...│       │ username    │
-│ ...         │       │ ...         │
-└─────────────┘       └─────────────┘
-       │
-       │1
-       │
-       │*
-┌─────────────┐
-│PassengerInfo│
-├─────────────┤
-│ id(PK)      │
-│ bookingId(FK)│
-│ firstName   │
-│ lastName    │
-│ ...         │
-└─────────────┘
+Lỗi do `PK_FK` không hợp lệ trong Mermaid ERD — chỉ được dùng `PK` hoặc `FK` riêng lẻ, không ghép được. Sửa lại:
 
-┌─────────────┐
-│ PaymentInfo │
-├─────────────┤
-│ id(PK)      │
-│ bookingId(FK)│
-│ paymentType │
-│ cardNumber  │
-│ ...         │
-└─────────────┘
+```mermaid
+erDiagram
+    User {
+        uuid id PK
+        string email UK
+        string password
+        string username
+        string image
+        string name
+        datetime emailVerified
+        datetime createdAt
+        datetime updatedAt
+    }
 
-┌─────────────┐
-│ShareItinerary│
-├─────────────┤
-│ id(PK)      │
-│ bookingId(FK)│
-│ email       │
-└─────────────┘
+    Account {
+        uuid id PK
+        uuid userId FK
+        string providerType
+        string provider
+        string providerAccountId
+        string refreshToken
+        string accessToken
+        datetime accessTokenExpires
+        datetime createdAt
+        datetime updatedAt
+    }
 
-┌─────────────┐       ┌─────────────┐
-│    User     │1     *│   Account   │
-└─────────────┘       ├─────────────┤
-                       │ id(PK)      │
-                       │ userId(FK)  │
-                       │ provider    │
-                       │ ...         │
-                       └─────────────┘
+    Flight {
+        uuid flightId PK
+        string fromCity
+        string toCity
+        boolean type
+        string imgPath
+        float subtotalPrice
+        float taxesAndFees
+        float baggageFees
+        string airlineName
+        string duration
+        int numberofStops
+        string stopsInfo
+        string fromToTime
+        datetime Date
+    }
 
-┌─────────────┐       ┌─────────────┐
-│    User     │1     *│CommentSection│
-└─────────────┘       ├─────────────┤
-                       │ id(PK)      │
-                       │ userId(FK)  │
-                       │ rate        │
-                       │ description │
-                       └─────────────┘
+    Seat {
+        uuid flightId FK
+        string seatNumber
+        string type
+        boolean available
+        float price
+    }
+
+    Booking {
+        uuid id PK
+        uuid userId FK
+        uuid departingFlightId FK
+        uuid returningFlightId FK
+        string departingSeat
+        string arrivingSeat
+        float baggageFees
+        float upgradeFees
+        float total
+        string confirmationMessage
+        datetime createdAt
+    }
+
+    PassengerInfo {
+        uuid id PK
+        string firstName
+        string middleName
+        string lastName
+        string suffix
+        datetime dateOfBirth
+        string email
+        string phone
+        string redressNumber
+        string knownTravelerNumber
+        uuid bookingId FK
+    }
+
+    PaymentInfo {
+        uuid id PK
+        string paymentType
+        uuid bookingId FK
+        string nameOnCard
+        string cardNumber
+        string ccv
+        datetime date
+        datetime expireDate
+        datetime createdAt
+        datetime updatedAt
+    }
+
+    ShareItinerary {
+        uuid id PK
+        uuid bookingId FK
+        string email
+        datetime createdAt
+    }
+
+    CommentSection {
+        uuid id PK
+        uuid userId FK
+        datetime date
+        int rate
+        string description
+    }
+
+    FlightDeals {
+        uuid id PK
+        string placeName
+        string city
+        string imgPath
+        float price
+        string description
+    }
+
+    UniquePlaces {
+        uuid id PK
+        string placeName
+        string city
+        string imgPath
+        float price
+        string description
+        string motivation
+    }
+
+    User ||--o{ Account : "has"
+    User ||--o{ Booking : "makes"
+    User ||--o{ CommentSection : "writes"
+    Flight ||--o{ Seat : "has"
+    Flight ||--o{ Booking : "departing"
+    Flight ||--o{ Booking : "returning"
+    Booking ||--o{ PassengerInfo : "has"
+    Booking ||--o{ PaymentInfo : "has"
+    Booking ||--o{ ShareItinerary : "shares"
 ```
 
 ---
