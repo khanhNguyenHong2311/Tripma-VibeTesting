@@ -126,7 +126,10 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 7b. Frontend redirects to homepage.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-SELECT-001 — Chỉ được chọn 1 chuyến bay đi tại một thời điểm
+- BR-SELECT-002 — Nếu là round-trip, phải chọn cả chuyến đi và chuyến về
+- BR-SELECT-003 — Chuyến bay được chọn được lưu trong localStorage
+- BR-SELECT-004 — Chuyến bay được highlight khi được chọn
 
 **Related UI:** Flights page (/flights); Flight card component  
 **Related API IDs:** GET /api/flights  
@@ -421,7 +424,11 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 9a. If share request fails, frontend shows error message.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-CONFIRM-001 — Hiển thị confirmation code (12 ký tự UUID)
+- BR-CONFIRM-002 — Hiển thị flight summary (fromCity, toCity, date, time)
+- BR-CONFIRM-003 — Hiển thị price breakdown (subtotal, taxes, baggage, upgrade)
+- BR-CONFIRM-004 — Cho phép share itinerary qua email
+- BR-CONFIRM-005 — Hiển thị hotel suggestions cho cross-selling
 
 **Related UI:** Success page (/successbooking); Confirmation component  
 **Related API IDs:** GET /api/bookings/[id] (not implemented)  
@@ -663,7 +670,9 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 2a. If no deals exist, frontend shows No deals available message.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-DEALS-001 — Hiển thị deal image, price, và description
+- BR-DEALS-002 — Click vào deal sẽ pre-fill search parameters và redirect đến flights page
+- BR-DEALS-003 — Data là static (không có API riêng)
 
 **Related UI:** Homepage (/); Flight deals component  
 **Related API IDs:** GET /api/flights (for deal flights)  
@@ -711,7 +720,9 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 2a. If no places exist, frontend shows No places available message.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-PLACES-001 — Hiển thị place image, price, description, và motivation
+- BR-PLACES-002 — Click vào place sẽ pre-fill search parameters và redirect đến flights page
+- BR-PLACES-003 — Data là static (không có API riêng)
 
 **Related UI:** Homepage (/); Unique places component  
 **Related API IDs:** GET /api/flights (for place flights)  
@@ -760,7 +771,10 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 8b. Frontend shows Failed to send email error.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-SHARE-001 — Email phải đúng format: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+- BR-SHARE-002 — Share record sẽ link bookingId với recipient email
+- BR-SHARE-003 — Itinerary email được gửi đến recipient
+- BR-SHARE-004 — Chức năng này chưa được implement (không có API endpoint)
 
 **Related UI:** Success page (/successbooking); Share itinerary component  
 **Related API IDs:** POST /api/bookings/[id]/share (not implemented)  
@@ -813,7 +827,10 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 2a. If user is not authenticated, frontend redirects to sign in page.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-HISTORY-001 — Bookings được filter theo userId
+- BR-HISTORY-002 — Mỗi booking bao gồm: flight details, passenger info, payment info
+- BR-HISTORY-003 — Cho phép filter bookings theo date
+- BR-HISTORY-004 — Chức năng này chưa được implement (không có API endpoint)
 
 **Related UI:** Your Trips page (/packages); Booking history component  
 **Related API IDs:** GET /api/users/[id]/bookings (not implemented)  
@@ -867,7 +884,10 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - 5a. If request fails, frontend shows error message.
 
 **Business Rules:**
-- Không có luật nghiệp vụ riêng cho use case này.
+- BR-CANCEL-001 — Booking status được update thành cancelled
+- BR-CANCEL-002 — Refund được xử lý dựa trên cancellation policy (chưa implement)
+- BR-CANCEL-003 — Cancellation phải được thực hiện trước deadline (chưa implement)
+- BR-CANCEL-004 — Chức năng này chưa được implement (không có API endpoint)
 
 **Related UI:** Booking details page; Cancel booking component  
 **Related API IDs:** DELETE /api/bookings/[id] (not implemented)  
@@ -879,7 +899,7 @@ Format: Vertical field-value layout; repository AS-IS documentation
 
 **Total Use Cases:** 14
 
-**Implemented Use Cases:** 8
+**Implemented Use Cases:** 11
 - UC-01: Search Flights
 - UC-02: Select Flight
 - UC-03: Enter Passenger Info
@@ -900,3 +920,21 @@ Format: Vertical field-value layout; repository AS-IS documentation
 **Actors:**
 - Visitor: 11 use cases (UC-01 to UC-11)
 - Authenticated User: 3 use cases (UC-12 to UC-14)
+
+**Total Business Rules:** 60+
+- BR-SEARCH-001 to BR-SEARCH-008 (8 rules)
+- BR-SELECT-001 to BR-SELECT-004 (4 rules)
+- BR-PASS-001 to BR-PASS-006 (6 rules)
+- BR-SEAT-001 to BR-SEAT-009 (9 rules)
+- BR-BOOK-001 to BR-BOOK-006 (6 rules)
+- BR-PRICE-001 to BR-PRICE-005 (5 rules)
+- BR-PAY-001 to BR-PAY-007 (7 rules)
+- BR-CONFIRM-001 to BR-CONFIRM-005 (5 rules)
+- BR-AUTH-001 to BR-AUTH-008 (8 rules)
+- BR-SIGNIN-001 to BR-SIGNIN-010 (10 rules)
+- BR-CITY-001 to BR-CITY-003 (3 rules)
+- BR-DEALS-001 to BR-DEALS-003 (3 rules)
+- BR-PLACES-001 to BR-PLACES-003 (3 rules)
+- BR-SHARE-001 to BR-SHARE-004 (4 rules)
+- BR-HISTORY-001 to BR-HISTORY-004 (4 rules)
+- BR-CANCEL-001 to BR-CANCEL-004 (4 rules)
