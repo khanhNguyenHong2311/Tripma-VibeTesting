@@ -42,53 +42,181 @@ Format: Vertical field-value layout; repository AS-IS documentation
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful search.
   - Description: Array of departing flights matching criteria.
-  - Example:
-    ```json
-    [
-      {
-        "flightId": "uuid",
-        "fromCity": "New York",
-        "toCity": "London",
-        "type": true,
-        "imgPath": "/path/to/image",
-        "subtotalPrice": 500,
-        "taxesAndFees": 50,
-        "airlineName": "Airline Name",
-        "duration": "7h 30m",
-        "fromToTime": "10:00 - 17:30",
-        "date": "2024-08-15T10:00:00Z",
-        "availableSeats": 150,
-        "stopsNumber": 0,
-        "stopsInfo": "Direct"
-      }
-    ]
-    ```
+  - Example: []
+
+- departingFlights[].flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- departingFlights[].fromCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Departure city name.
+  - Example: "New York"
+
+- departingFlights[].toCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Arrival city name.
+  - Example: "London"
+
+- departingFlights[].type
+  - Type: boolean; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Flight type (true for round-trip).
+  - Example: true
+
+- departingFlights[].imgPath
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Path to flight image.
+  - Example: "/path/to/image"
+
+- departingFlights[].subtotalPrice
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Base price of the flight.
+  - Example: 500
+
+- departingFlights[].taxesAndFees
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Taxes and fees amount.
+  - Example: 50
+
+- departingFlights[].airlineName
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Name of the airline.
+  - Example: "Airline Name"
+
+- departingFlights[].duration
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Flight duration.
+  - Example: "7h 30m"
+
+- departingFlights[].fromToTime
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Departure and arrival time.
+  - Example: "10:00 - 17:30"
+
+- departingFlights[].date
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Flight date and time.
+  - Example: "2024-08-15T10:00:00Z"
+
+- departingFlights[].availableSeats
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Number of available seats.
+  - Example: 150
+
+- departingFlights[].stopsNumber
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Number of stops.
+  - Example: 0
+
+- departingFlights[].stopsInfo
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search.
+  - Description: Stop information.
+  - Example: "Direct"
 
 - arrivingFlights
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful search with round-trip.
   - Description: Array of returning flights matching criteria (empty if one-way).
-  - Example:
-    ```json
-    [
-      {
-        "flightId": "uuid",
-        "fromCity": "London",
-        "toCity": "New York",
-        "type": true,
-        "imgPath": "/path/to/image",
-        "subtotalPrice": 500,
-        "taxesAndFees": 50,
-        "airlineName": "Airline Name",
-        "duration": "7h 30m",
-        "fromToTime": "10:00 - 17:30",
-        "date": "2024-08-20T10:00:00Z",
-        "availableSeats": 150,
-        "stopsNumber": 0,
-        "stopsInfo": "Direct"
-      }
-    ]
-    ```
+  - Example: []
+
+- arrivingFlights[].flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- arrivingFlights[].fromCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Departure city name.
+  - Example: "London"
+
+- arrivingFlights[].toCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Arrival city name.
+  - Example: "New York"
+
+- arrivingFlights[].type
+  - Type: boolean; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Flight type (true for round-trip).
+  - Example: true
+
+- arrivingFlights[].imgPath
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Path to flight image.
+  - Example: "/path/to/image"
+
+- arrivingFlights[].subtotalPrice
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Base price of the flight.
+  - Example: 500
+
+- arrivingFlights[].taxesAndFees
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Taxes and fees amount.
+  - Example: 50
+
+- arrivingFlights[].airlineName
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Name of the airline.
+  - Example: "Airline Name"
+
+- arrivingFlights[].duration
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Flight duration.
+  - Example: "7h 30m"
+
+- arrivingFlights[].fromToTime
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Departure and arrival time.
+  - Example: "10:00 - 17:30"
+
+- arrivingFlights[].date
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Flight date and time.
+  - Example: "2024-08-20T10:00:00Z"
+
+- arrivingFlights[].availableSeats
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Number of available seats.
+  - Example: 150
+
+- arrivingFlights[].stopsNumber
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Number of stops.
+  - Example: 0
+
+- arrivingFlights[].stopsInfo
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful search with round-trip.
+  - Description: Stop information.
+  - Example: "Direct"
 
 **Error Response — HTTP 500:**
 - message
@@ -137,19 +265,25 @@ Evidence: app/api/flights/route.js::GET
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful retrieval.
   - Description: Array of unique departure city names.
-  - Example:
-    ```json
-    ["New York", "London", "Paris", "Tokyo"]
-    ```
+  - Example: []
+
+- fromCities[]
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Departure city name.
+  - Example: "New York"
 
 - toCities
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful retrieval.
   - Description: Array of unique arrival city names.
-  - Example:
-    ```json
-    ["New York", "London", "Paris", "Tokyo"]
-    ```
+  - Example: []
+
+- toCities[]
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Arrival city name.
+  - Example: "London"
 
 **Error Response — HTTP 500:**
 - error
@@ -198,37 +332,85 @@ Evidence: app/api/cities/route.js::GET
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful retrieval.
   - Description: Array of available Business class seats.
-  - Example:
-    ```json
-    [
-      {
-        "seatId": "uuid",
-        "flightId": "uuid",
-        "seatNumber": "1A",
-        "type": "Business",
-        "available": true,
-        "price": 200
-      }
-    ]
-    ```
+  - Example: []
+
+- businessSeats[].seatId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat identifier.
+  - Example: "uuid"
+
+- businessSeats[].flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- businessSeats[].seatNumber
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat number.
+  - Example: "1A"
+
+- businessSeats[].type
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat type.
+  - Example: "Business"
+
+- businessSeats[].available
+  - Type: boolean; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat availability status.
+  - Example: true
+
+- businessSeats[].price
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat price.
+  - Example: 200
 
 - economySeats
   - Type: array; Required: Yes; Nullable: No
   - Trigger: Successful retrieval.
   - Description: Array of available Economy class seats.
-  - Example:
-    ```json
-    [
-      {
-        "seatId": "uuid",
-        "flightId": "uuid",
-        "seatNumber": "10A",
-        "type": "Economy",
-        "available": true,
-        "price": 100
-      }
-    ]
-    ```
+  - Example: []
+
+- economySeats[].seatId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat identifier.
+  - Example: "uuid"
+
+- economySeats[].flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- economySeats[].seatNumber
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat number.
+  - Example: "10A"
+
+- economySeats[].type
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat type.
+  - Example: "Economy"
+
+- economySeats[].available
+  - Type: boolean; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat availability status.
+  - Example: true
+
+- economySeats[].price
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful retrieval.
+  - Description: Seat price.
+  - Example: 100
 
 **Error Response — HTTP 500:**
 - error
@@ -477,84 +659,163 @@ Evidence: app/api/seats/[flightId]/route.js::GET
   - Type: object; Required: Yes; Nullable: No
   - Trigger: Successful booking creation.
   - Description: Departing flight details.
-  - Example:
-    ```json
-    {
-      "flightId": "uuid",
-      "fromCity": "New York",
-      "toCity": "London",
-      ...
-    }
-    ```
+  - Example: {}
+
+- departingFlight.flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- departingFlight.fromCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Departure city name.
+  - Example: "New York"
+
+- departingFlight.toCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Arrival city name.
+  - Example: "London"
 
 - returningFlight
   - Type: object; Required: No; Nullable: Yes
   - Trigger: Successful round-trip booking creation.
   - Description: Returning flight details (null if one-way).
-  - Example:
-    ```json
-    {
-      "flightId": "uuid",
-      "fromCity": "London",
-      "toCity": "New York",
-      ...
-    }
-    ```
+  - Example: {}
+
+- returningFlight.flightId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Flight identifier.
+  - Example: "uuid"
+
+- returningFlight.fromCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Departure city name.
+  - Example: "London"
+
+- returningFlight.toCity
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Arrival city name.
+  - Example: "New York"
 
 - passengerInfo
   - Type: object; Required: Yes; Nullable: No
   - Trigger: Successful booking creation.
   - Description: Passenger info summary.
-  - Example:
-    ```json
-    {
-      "firstName": "John",
-      "checkedBags": 2
-    }
-    ```
+  - Example: {}
+
+- passengerInfo.firstName
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Passenger's first name.
+  - Example: "John"
+
+- passengerInfo.checkedBags
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Number of checked bags.
+  - Example: 2
 
 - paymentInfo
   - Type: object; Required: Yes; Nullable: No
   - Trigger: Successful booking creation.
   - Description: Payment info summary (card number masked).
-  - Example:
-    ```json
-    {
-      "paymentType": "Visa",
-      "nameOnCard": "John Doe",
-      "cardNumber": "3456",
-      "ccv": "123",
-      "expireDate": "2025-12-31"
-    }
-    ```
+  - Example: {}
+
+- paymentInfo.paymentType
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Payment type.
+  - Example: "Visa"
+
+- paymentInfo.nameOnCard
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Name on card.
+  - Example: "John Doe"
+
+- paymentInfo.cardNumber
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Masked card number (last 4 digits).
+  - Example: "3456"
+
+- paymentInfo.ccv
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Card CCV.
+  - Example: "123"
+
+- paymentInfo.expireDate
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Card expiration date.
+  - Example: "2025-12-31"
 
 - departingSeat
   - Type: object; Required: Yes; Nullable: No
   - Trigger: Successful booking creation.
   - Description: Departing seat details.
-  - Example:
-    ```json
-    {
-      "seatId": "uuid",
-      "seatNumber": "10A",
-      "type": "Economy",
-      "price": 100
-    }
-    ```
+  - Example: {}
+
+- departingSeat.seatId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Seat identifier.
+  - Example: "uuid"
+
+- departingSeat.seatNumber
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Seat number.
+  - Example: "10A"
+
+- departingSeat.type
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Seat type.
+  - Example: "Economy"
+
+- departingSeat.price
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful booking creation.
+  - Description: Seat price.
+  - Example: 100
 
 - arrivingSeat
   - Type: object; Required: No; Nullable: Yes
   - Trigger: Successful round-trip booking creation.
   - Description: Arriving seat details (null if one-way).
-  - Example:
-    ```json
-    {
-      "seatId": "uuid",
-      "seatNumber": "5A",
-      "type": "Economy",
-      "price": 100
-    }
-    ```
+  - Example: {}
+
+- arrivingSeat.seatId
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Seat identifier.
+  - Example: "uuid"
+
+- arrivingSeat.seatNumber
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Seat number.
+  - Example: "5A"
+
+- arrivingSeat.type
+  - Type: string; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Seat type.
+  - Example: "Economy"
+
+- arrivingSeat.price
+  - Type: number; Required: Yes; Nullable: No
+  - Trigger: Successful round-trip booking creation.
+  - Description: Seat price.
+  - Example: 100
 
 - confirmationMessage
   - Type: string; Format: string; Required: Yes; Nullable: No
