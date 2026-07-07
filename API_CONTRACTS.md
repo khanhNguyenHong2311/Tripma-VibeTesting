@@ -848,159 +848,162 @@ Notes	Source: app/api/booking/route.js Security issue: Card number is stored in 
 
 ## API-AUTH-SIGNUP — User Sign Up
 
-**API ID:** API-AUTH-SIGNUP  
-**API Name:** User Sign Up  
-**Related Use Case IDs:** UC-07  
-**Method:** POST  
-**Path:** /api/auth/signup  
-**Description:** Register a new user account with email and password.  
-**Authentication:** Public  
-**Authorization:** None  
+API ID	API-AUTH-SIGNUP
+API Name	User Sign Up
+Related Use Case IDs	UC-07
+Method	POST
+Path	/api/auth/signup
+Description	Register a new user account with email and password.
+Authentication	Public
+Authorization	None
+Business Rules / Validation Constraints	"BR-AUTH-001 — Email là bắt buộc, không được để trống
+BR-AUTH-002 — Email phải chứa ký tự "@"
+BR-AUTH-003 — Password là bắt buộc, không được để trống
+BR-AUTH-004 — Password phải có tối thiểu 8 ký tự (MIN_PASSWORD_LENGTH = 8)
+BR-AUTH-005 — Người dùng phải đồng ý điều khoản sử dụng (agreeTerms = true)
+BR-AUTH-006 — Email phải là duy nhất trong hệ thống, không được trùng với email đã đăng ký
+BR-AUTH-007 — Password được hash bằng bcrypt với SALT_ROUNDS = 10 trước khi lưu
+BR-AUTH-008 — Username được tự động generate: {email_prefix}_{timestamp}"
+Request Header(s)	"• headers.Content-Type
+  Type: string; Format: MIME type; Required: Yes; Nullable: No
+  Default: application/json
+  Allowed values: application/json
+  Validation: Request body must be JSON.
+  Trigger: Every request containing a JSON body.
+  Description: Declares the request body format.
+  Example: application/json"
+Request Body	"• email
+  Type: string; Format: email; Required: Yes; Nullable: No
+  Validation: Must be non-empty and contain "@" symbol.
+  Trigger: Sign up request.
+  Description: User's email address.
+  Example: "user@example.com"
 
-**Business Rules / Validation Constraints:**
-- BR-AUTH-001 — Email là bắt buộc, không được để trống
-- BR-AUTH-002 — Email phải chứa ký tự "@"
-- BR-AUTH-003 — Password là bắt buộc, không được để trống
-- BR-AUTH-004 — Password phải có tối thiểu 8 ký tự (MIN_PASSWORD_LENGTH = 8)
-- BR-AUTH-005 — Người dùng phải đồng ý điều khoản sử dụng (agreeTerms = true)
-- BR-AUTH-006 — Email phải là duy nhất trong hệ thống, không được trùng với email đã đăng ký
-- BR-AUTH-007 — Password được hash bằng bcrypt với SALT_ROUNDS = 10 trước khi lưu
-- BR-AUTH-008 — Username được tự động generate: {email_prefix}_{timestamp}
+• password
+  Type: string; Format: password; Required: Yes; Nullable: No
+  Validation: Must be at least 8 characters long.
+  Trigger: Sign up request.
+  Description: User's password.
+  Example: "P@ssw0rd123"
 
-**Request Header(s):**
-- headers.Content-Type
-  - Type: string; Format: MIME type; Required: Yes; Nullable: No
-  - Default: application/json
-  - Allowed values: application/json
-  - Validation: Request body must be JSON.
-  - Trigger: Every request containing a JSON body.
-  - Description: Declares the request body format.
-  - Example: application/json
+• agreeTerms
+  Type: boolean; Format: boolean; Required: Yes; Nullable: No
+  Allowed values: true
+  Validation: Must be true.
+  Trigger: Sign up request.
+  Description: User's agreement to terms and conditions.
+  Example: true"
+Success Response — HTTP 200	"• success
+  Type: boolean; Required: Yes; Nullable: No
+  Trigger: Successful registration.
+  Description: Indicates successful registration.
+  Example: true
 
-**Request Body:**
-- email
-  - Type: string; Format: email; Required: Yes; Nullable: No
-  - Validation: Must be non-empty and contain "@" symbol.
-  - Trigger: Sign up request.
-  - Description: User's email address.
-  - Example: "user@example.com"
+• message
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Successful registration.
+  Description: Success message.
+  Example: Signup successful
 
-- password
-  - Type: string; Format: password; Required: Yes; Nullable: No
-  - Validation: Must be at least 8 characters long.
-  - Trigger: Sign up request.
-  - Description: User's password.
-  - Example: "P@ssw0rd123"
-
-- agreeTerms
-  - Type: boolean; Format: boolean; Required: Yes; Nullable: No
-  - Validation: Must be true.
-  - Trigger: Sign up request.
-  - Description: User's agreement to terms and conditions.
-  - Example: true
-
-**Success Response — HTTP 200:**
-- message
-  - Type: string; Required: Yes; Nullable: No
-  - Trigger: Successful registration.
-  - Description: Success message.
-  - Example: "Signup successful"
-
-**Error Response — HTTP 400:**
-- error
-  - Type: string; Required: Yes; Nullable: No
-  - Trigger: Missing email/password, invalid email, password too short, terms not agreed, or email already exists.
-  - Description: Error message.
-  - Example: "Email is already in use"
-
-**Error Response — HTTP 500:**
-- error
-  - Type: string; Required: Yes; Nullable: No
-  - Trigger: Internal server error.
-  - Description: Error message.
-  - Example: "An error occurred during signup"
-
-**Notes:**
-Source: app/api/auth/signup/route.js  
-Repository status: Implemented and functional.  
-Default location is hardcoded to "Cairo", "Egypt".  
-Evidence: app/api/auth/signup/route.js::POST
+Error Response — HTTP 400	"• message
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Missing email/password, invalid email, password too short, terms not agreed, or email already exists.
+  Description: Error message.
+  Example: "Email is already in use"
+  Note: The error envelope also contains success=false and may contain an error field."
+Error Response — HTTP 500	"• message
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Internal server error.
+  Description: Error message.
+  Example: "An error occurred during signup"
+  Note: The error envelope also contains success=false and may contain an error field."
+Notes	Source: app/api/auth/signup/route.js Default location is hardcoded to "Cairo", "Egypt". Repository status: Implemented and functional. Evidence: app/api/auth/signup/route.js::POST
 
 ---
 
 ## API-AUTH-SIGNIN — User Sign In
 
-**API ID:** API-AUTH-SIGNIN  
-**API Name:** User Sign In  
-**Related Use Case IDs:** UC-08  
-**Method:** POST  
-**Path:** /api/auth/[...nextauth]  
-**Description:** Authenticate user with email/password credentials or Google OAuth. Issues JWT session token.  
-**Authentication:** Public  
-**Authorization:** None  
+API ID	API-AUTH-SIGNIN
+API Name	User Sign In
+Related Use Case IDs	UC-08
+Method	POST
+Path	/api/auth/[...nextauth]
+Description	Authenticate user with email/password credentials or Google OAuth. Issues JWT session token.
+Authentication	Public
+Authorization	None
+Business Rules / Validation Constraints	"BR-SIGNIN-001 — Email là bắt buộc, không được để trống
+BR-SIGNIN-002 — Email phải chứa ký tự "@"
+BR-SIGNIN-003 — Password là bắt buộc, không được để trống
+BR-SIGNIN-004 — Password phải có tối thiểu 8 ký tự (MIN_PASSWORD_LENGTH = 8)
+BR-SIGNIN-005 — Password được verify bằng bcrypt compare với hash trong database
+BR-SIGNIN-006 — Session strategy sử dụng JWT
+BR-SIGNIN-007 — JWT token chứa: id, email, username
+BR-SIGNIN-008 — Session object chứa: user.id, user.email, user.username
+BR-SIGNIN-009 — Google OAuth provider được cấu hình với GOOGLE_CLIENT_ID và GOOGLE_CLIENT_SECRET
+BR-SIGNIN-010 — Google OAuth sử dụng PrismaAdapter để tạo/update user"
+Request Header(s)	"• headers.Content-Type
+  Type: string; Format: MIME type; Required: Yes; Nullable: No
+  Default: application/json
+  Allowed values: application/json
+  Validation: Request body must be JSON.
+  Trigger: Every request containing a JSON body.
+  Description: Declares the request body format.
+  Example: application/json"
+Request Body	"• email
+  Type: string; Format: email; Required: Yes; Nullable: No
+  Validation: Must be non-empty and contain "@" symbol.
+  Trigger: Sign in request.
+  Description: User's email address.
+  Example: "user@example.com"
 
-**Business Rules / Validation Constraints:**
-- BR-SIGNIN-001 — Email là bắt buộc, không được để trống
-- BR-SIGNIN-002 — Email phải chứa ký tự "@"
-- BR-SIGNIN-003 — Password là bắt buộc, không được để trống
-- BR-SIGNIN-004 — Password phải có tối thiểu 8 ký tự (MIN_PASSWORD_LENGTH = 8)
-- BR-SIGNIN-005 — Password được verify bằng bcrypt compare với hash trong database
-- BR-SIGNIN-006 — Session strategy sử dụng JWT
-- BR-SIGNIN-007 — JWT token chứa: id, email, username
-- BR-SIGNIN-008 — Session object chứa: user.id, user.email, user.username
-- BR-SIGNIN-009 — Google OAuth provider được cấu hình với GOOGLE_CLIENT_ID và GOOGLE_CLIENT_SECRET
-- BR-SIGNIN-010 — Google OAuth sử dụng PrismaAdapter để tạo/update user
+• password
+  Type: string; Format: password; Required: Yes; Nullable: No
+  Validation: Must be at least 8 characters long.
+  Trigger: Sign in request.
+  Description: User's password.
+  Example: "P@ssw0rd123"
 
-**Request Header(s):**
-- headers.Content-Type
-  - Type: string; Format: MIME type; Required: Yes; Nullable: No
-  - Default: application/json
-  - Allowed values: application/json
-  - Validation: Request body must be JSON.
-  - Trigger: Every request containing a JSON body.
-  - Description: Declares the request body format.
-  - Example: application/json
+Success Response — HTTP 200 (Credentials)	"Session object with JWT token set in cookie.
 
-**Request Body:**
-- email
-  - Type: string; Format: email; Required: Yes; Nullable: No
-  - Validation: Must be non-empty and contain "@" symbol.
-  - Trigger: Sign in request.
-  - Description: User's email address.
-  - Example: "user@example.com"
+• data.user.id
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Successful sign in with credentials.
+  Description: User ID.
+  Example: "uuid"
 
-- password
-  - Type: string; Format: password; Required: Yes; Nullable: No
-  - Validation: Must be at least 8 characters long.
-  - Trigger: Sign in request.
-  - Description: User's password.
-  - Example: "P@ssw0rd123"
+• data.user.email
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Successful sign in with credentials.
+  Description: User email.
+  Example: "user@example.com"
 
-**Success Response — HTTP 200 (Credentials):**
-Session object with JWT token set in cookie.
+• data.user.username
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Successful sign in with credentials.
+  Description: Username.
+  Example: "user_1234567890"
 
-**Success Response — HTTP 302 (Google OAuth):**
-Redirect to Google OAuth consent screen.
+• data.expires
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Successful sign in with credentials.
+  Description: JWT token expiration time.
+  Example: "2024-08-15T10:00:00Z"
 
-**Error Response — HTTP 401:**
-- error
-  - Type: string; Required: Yes; Nullable: No
-  - Trigger: Invalid credentials (email not found or password incorrect).
-  - Description: Error message.
-  - Example: "Invalid email or password"
+Success Response — HTTP 302 (Google OAuth)	Redirect to Google OAuth consent screen.
 
-**Error Response — HTTP 500:**
-- error
-  - Type: string; Required: Yes; Nullable: No
-  - Trigger: Internal server error.
-  - Description: Error message.
-  - Example: "Internal Server Error"
-
-**Notes:**
-Source: app/api/auth/[...nextauth]/route.js  
-Repository status: Implemented and functional.  
-Uses NextAuth.js with CredentialsProvider and GoogleProvider.  
-Evidence: app/api/auth/[...nextauth]/route.js::POST
+Error Response — HTTP 401	"• message
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Invalid credentials (email not found or password incorrect).
+  Description: Error message.
+  Example: "Invalid email or password"
+  Note: The error envelope also contains success=false and may contain an error field."
+Error Response — HTTP 500	"• message
+  Type: string; Required: Yes; Nullable: No
+  Trigger: Internal server error.
+  Description: Error message.
+  Example: "Internal Server Error"
+  Note: The error envelope also contains success=false and may contain an error field."
+Notes	Source: app/api/auth/[...nextauth]/route.js Uses NextAuth.js with CredentialsProvider and GoogleProvider. Repository status: Implemented and functional. Evidence: app/api/auth/[...nextauth]/route.js::POST
 
 ---
 
