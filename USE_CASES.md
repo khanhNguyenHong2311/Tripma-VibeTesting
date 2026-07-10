@@ -15,13 +15,43 @@ Format: Vertical field-value layout; repository AS-IS documentation
 
 **Pre-Condition(s):**
 - PRE-1: The frontend homepage route / is accessible.
+  PRE-1[OCL]:
+  context homeController::index()
+  pre : Route.allInstances()->exists(r |
+      r.path = '/' and r.status = RouteStatus::ACTIVE
+  )
+
 - PRE-2: The backend and database are available.
+  PRE-2[OCL]:
+  context flightService::searchFlights()
+  pre : Database.isConnected() and API.isHealthy()
+
 - PRE-3: GET /api/cities returns available cities.
+  PRE-3[OCL]:
+  context cityService::getCities()
+  pre : City.allInstances()->size() > 0
 
 **Post-Condition(s):**
 - POST-1: On success, search parameters are saved in localStorage.
+  POST-1[OCL]:
+  context flightService::searchFlights()
+  post : result.success implies
+      localStorage.getItem('searchParams') <> null and
+      localStorage.getItem('searchParams').fromCity = req.query.fromCity and
+      localStorage.getItem('searchParams').toCity = req.query.toCity
+
 - POST-2: Available flights are displayed on the flights page.
+  POST-2[OCL]:
+  context flightService::searchFlights()
+  post : result.success implies
+      result.data.departingFlights->notEmpty() or
+      result.data.departingFlights->isEmpty()
+
 - POST-3: On failure, an error message is shown.
+  POST-3[OCL]:
+  context flightService::searchFlights()
+  post : not result.success implies
+      result.message <> null
 
 **Basic Flow:**
 1. The visitor opens the homepage.
@@ -64,13 +94,59 @@ Format: Vertical field-value layout; repository AS-IS documentation
 
 **Business Rules:**
 - BR-SEARCH-001 — Tổng hành khách = adults + minors
+  OCL:
+  context FlightSearchRequest
+  inv TotalPassengers:
+      totalPassengers = adults + minors
+
 - BR-SEARCH-002 — Chuyến bay phải có ít nhất 1 ghế available mới được tìm thấy
+  OCL:
+  context flightService::searchFlights()
+  post : result.data.departingFlights->forAll(f |
+      f.availableSeats >= 1
+  )
+
 - BR-SEARCH-003 — Số ghế available của chuyến bay phải >= tổng hành khách
+  OCL:
+  context flightService::searchFlights()
+  post : result.data.departingFlights->forAll(f |
+      f.availableSeats >= req.query.adults + req.query.minors
+  )
+
 - BR-SEARCH-004 — Chuyến đi chỉ tìm trong khoảng: startDate <= Date < startDate + 24h
+  OCL:
+  context flightService::searchFlights()
+  post : result.data.departingFlights->forAll(f |
+      f.date >= req.query.startDate and
+      f.date < req.query.startDate.addHours(24)
+  )
+
 - BR-SEARCH-005 — Chuyến về chỉ tìm trong khoảng: endDate <= Date < endDate + 24h
+  OCL:
+  context flightService::searchFlights()
+  post : result.data.arrivingFlights->forAll(f |
+      f.date >= req.query.endDate and
+      f.date < req.query.endDate.addHours(24)
+  )
+
 - BR-SEARCH-006 — Chuyến về chỉ được tìm khi type = round-trip và có endDate
+  OCL:
+  context flightService::searchFlights()
+  post : req.query.type = 'round-trip' and req.query.endDate <> null implies
+      result.data.arrivingFlights->notEmpty()
+
 - BR-SEARCH-007 — Chuyến về phải có fromCity và toCity đảo ngược so với chuyến đi
+  OCL:
+  context flightService::searchFlights()
+  post : result.data.arrivingFlights->forAll(f |
+      f.fromCity = req.query.toCity and
+      f.toCity = req.query.fromCity
+  )
+
 - BR-SEARCH-008 — Không có validation cho input parameters — thiếu fromCity/toCity/date không báo lỗi
+  OCL:
+  context flightService::searchFlights()
+  pre : true -- No validation required
 
 **Related UI:** Homepage (/); Flights page (/flights); Search form component  
 **Related API IDs:** API-FLIGHTS-SEARCH  
@@ -89,12 +165,38 @@ Format: Vertical field-value layout; repository AS-IS documentation
 
 **Pre-Condition(s):**
 - PRE-1: Flight search results are displayed.
+  PRE-1[OCL]:
+  context flightSelectionController::index()
+  pre : localStorage.getItem('searchResults') <> null and
+      localStorage.getItem('searchResults').departingFlights->notEmpty()
+
 - PRE-2: Selected flights state is initialized.
+  PRE-2[OCL]:
+  context flightSelectionController::index()
+  pre : selectedDepartingFlight = null and
+      selectedReturningFlight = null
 
 **Post-Condition(s):**
 - POST-1: On success, selected flights are saved to localStorage.
+  POST-1[OCL]:
+  context flightSelectionController::selectFlight()
+  post : result.success implies
+      localStorage.getItem('selectedDepartingFlight') <> null and
+      (req.body.type = 'round-trip' implies
+          localStorage.getItem('selectedReturningFlight') <> null)
+
 - POST-2: Visitor is redirected to passenger info page.
+  POST-2[OCL]:
+  context flightSelectionController::selectFlight()
+  post : result.success implies
+      window.location.href = '/booking/passenger'
+
 - POST-3: On failure, selection is not saved.
+  POST-3[OCL]:
+  context flightSelectionController::selectFlight()
+  post : not result.success implies
+      localStorage.getItem('selectedDepartingFlight') = null and
+      localStorage.getItem('selectedReturningFlight') = null
 
 **Basic Flow:**
 1. The visitor views available flights.
@@ -127,9 +229,29 @@ Format: Vertical field-value layout; repository AS-IS documentation
 
 **Business Rules:**
 - BR-SELECT-001 — Chỉ được chọn 1 chuyến bay đi tại một thời điểm
+  OCL:
+  context FlightSelectionState
+  inv SingleDepartingFlight:
+      selectedDepartingFlights->size() <= 1
+
 - BR-SELECT-002 — Nếu là round-trip, phải chọn cả chuyến đi và chuyến về
+  OCL:
+  context flightSelectionController::selectFlight()
+  pre : req.body.type = 'round-trip' implies
+      (selectedDepartingFlight <> null and selectedReturningFlight <> null)
+
 - BR-SELECT-003 — Chuyến bay được chọn được lưu trong localStorage
+  OCL:
+  context flightSelectionController::selectFlight()
+  post : result.success implies
+      localStorage.getItem('selectedDepartingFlight').flightId = req.body.departingFlightId
+
 - BR-SELECT-004 — Chuyến bay được highlight khi được chọn
+  OCL:
+  context FlightCardComponent
+  inv HighlightSelected:
+      self.flightId = selectedDepartingFlight.flightId implies
+      self.isHighlighted = true
 
 **Related UI:** Flights page (/flights); Flight card component  
 **Related API IDs:** GET /api/flights  
